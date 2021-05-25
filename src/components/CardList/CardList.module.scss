@@ -1,0 +1,99 @@
+.cardBlock {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.root {
+    background: linear-gradient(to top, rgba(26,40,120,0.9), rgba(10,143,196,0.9));
+    padding-top: 20px;
+}
+
+.signout {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 7%;
+}
+
+.searchForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 400px;
+    height: 100px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.searchLabel {
+    font-size: 24px;
+}
+
+.searchInput {
+    width: 350px;
+    padding-left: 70px;
+}
+.form {
+    width: 400px;
+    height: 340px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    
+
+    & label {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        font-size: 18px;
+    }
+
+    & input {
+        margin: 0 auto;
+        width: 200px;
+        height: 30px;
+
+        
+    }
+    
+    & .button {
+        width: 200px;
+        height: 50px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 800px) {
+    .cardBlock {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .searchForm {
+        width: 290px;
+    }
+
+    .searchInput {
+        width: 240px;
+        padding-left: 5px;
+    }
+
+    .form {
+        width: 290px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cardBlock {
+        grid-template-columns: 1fr;
+    }
+}

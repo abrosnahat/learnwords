@@ -1,0 +1,96 @@
+* {
+  Margin: 0;
+  Padding: 0;
+  Box-sizing: border-box;
+}
+
+.card {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 2px;
+  cursor: pointer;
+  perspective: 1000px;
+  height: 250px;
+  width: 200px;
+  
+  
+  &.done {
+    .cardInner {
+      transform: rotateY(180deg);
+    }
+  }
+
+  :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.cardInner {
+  position: relative;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.cardFront, 
+.cardBack {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  padding: 6px 12px;
+  font-size: 26px;
+  border-radius: 10px;
+}
+
+.isRemembered {
+  .cardFront,
+  .cardBack {
+    text-decoration: line-through;
+  }
+}
+
+.cardFront {
+  background-color: #fff;
+  color: black;
+}
+
+.cardBack {
+  background-color: #1BB95E;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.cardImg {
+  padding-bottom: 30px;
+  width: 176px;
+  height: 190px;
+}
+
+.icons {
+  font-size: 28px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  
+}
+
+.icon {
+
+  & svg {
+    -webkit-filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.2));
+    filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.2));
+  } 
+  
+  &:hover {
+    color: #1BB95E;
+  }
+}
