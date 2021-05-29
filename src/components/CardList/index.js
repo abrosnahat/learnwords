@@ -39,13 +39,13 @@ class CardList extends React.Component {
   getTheWord = async () => {
     const { value } = this.state;
     const getWord = await getTranslateWord(this.state.value);
-    console.log(getWord)
-    //const label = getWord.translate === undefined ? 'Такого слова нет' : `${value} - ${getWord.translate}`;
+   
+    const label = getWord.translate === undefined ? 'Такого слова нет' : `${value} - ${getWord.translate}`;
 
 
 
     this.setState({
-      //label: label,
+      label: label,
       value: value,
       isBusy: false
     })
