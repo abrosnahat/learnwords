@@ -1,6 +1,6 @@
 .cardBlock {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     justify-items: center;
     text-align: center;
     padding-top: 20px;
@@ -24,23 +24,50 @@
     justify-content: center;
     text-align: center;
     width: 400px;
-    height: 100px;
+   
     margin: 0 auto;
     margin-bottom: 20px;
+    padding: 10px 0;
+
+    background: rgba( 255, 255, 255, 0.35 ) !important;
+    
+    backdrop-filter: blur( 6.0px );
+    -webkit-backdrop-filter: blur( 6.0px );
+    
+
+
+    & input {
+        color: #fff;
+    }
+
+    & .searchToggle label {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        color: #fff;
+       
+    }
+
+  
 }
+
+
 
 .searchLabel {
     font-size: 24px;
+    color: #fff;
 }
 
 .searchInput {
     width: 350px;
     padding-left: 70px;
+    color: #fff;
+    
 }
 .form {
     width: 400px;
     height: 340px;
-    background: white;
+  
     display: flex;
     justify-content: center;
     text-align: center;
@@ -49,20 +76,28 @@
     margin-bottom: 20px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 5px;
-    
+    color: #fff;
+
+    background: rgba( 255, 255, 255, 0.35 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 6.0px );
+    -webkit-backdrop-filter: blur( 6.0px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
 
     & label {
         display: flex;
         flex-direction: column;
         margin-bottom: 20px;
         font-size: 18px;
+        color: #fff;
     }
 
     & input {
         margin: 0 auto;
         width: 200px;
         height: 30px;
-
+        color: #fff;
         
     }
     
@@ -70,6 +105,7 @@
         width: 200px;
         height: 50px;
         margin: 0 auto;
+        
     }
 }
 

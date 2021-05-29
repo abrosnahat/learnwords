@@ -42,10 +42,9 @@ class HomePage extends React.Component {
     
         return (
           <>
-          
-            {/* <HeaderBlock title="Выучить и запомнить слово навсегда!" descr="На нашем сайте вы можете составить свой список слов и выражений на изучаемом языке. А мы вам поможем их запомнить." /> */}
+            <HeaderBlock /> 
             <CardList onDeletedItem={this.handleIsDelitedItem} onAddedItem={this.handleIsAddedItem} item={wordArr} />
-            <FooterBlock text="Разработано при поддержке React Marathon 2.0" />
+            <FooterBlock text="© abros.nahat" />
           </>
         );
       }

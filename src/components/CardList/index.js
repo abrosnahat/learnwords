@@ -4,7 +4,6 @@ import s from './CardList.module.scss';
 import getTranslateWord from '../../services/dictionary';
 import { Input, FormLabel, IconButton, Paper, CircularProgress, Button } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 import FirebaseContext from '../../context/firebaseContext';
 
@@ -14,8 +13,9 @@ class CardList extends React.Component {
     rus: '',
     img: '',
     value: '',
-    label: 'Поиск слова',
-    isBusy: false
+    label: 'Перевод слова',
+    isBusy: false,
+    searchCardButton: false
   }
 
   handleEng = (e) => {
@@ -33,6 +33,8 @@ class CardList extends React.Component {
   handleInputChange = ({ target }) => {
     this.setState({
       value: target.value,
+      eng: target.value,
+      rus: this.state.rus
     })
   }
 
@@ -42,19 +44,13 @@ class CardList extends React.Component {
    
     const label = getWord.translate === undefined ? 'Такого слова нет' : `${value} - ${getWord.translate}`;
 
-
-
     this.setState({
       label: label,
       value: value,
-      isBusy: false
+      rus: getWord.translate,
+      isBusy: false,
+      searchCardButton: getWord.translate === undefined ? false : true
     })
-  }
-
-  onSignOut = () => {
-    const { signOut } = this.context;
-
-    signOut();
   }
 
   handleSubmitSearch = async (e) => {
@@ -69,23 +65,21 @@ class CardList extends React.Component {
 
   handleSubmitForm = (e) => {
     e.preventDefault();
+    this.setState({ searchCardButton: false })
     this.props.onAddedItem({
       eng: this.state.eng,
       rus: this.state.rus,
       id: +new Date(),
       img: this.state.img
     });
+
   }
 
   render() {
     const {item = [], onDeletedItem } = this.props;
     return (
       <div className={s.root}>
-        <div className={s.signout}>
-          <IconButton onClick={this.onSignOut}>
-            <ExitToAppIcon style={{ color: 'white', fontSize: 45 }} />
-          </IconButton>
-        </div>
+   
         
         <Paper className={s.searchForm} component="form" onSubmit={this.handleSubmitSearch}>
           <label className={s.searchLabel}>{this.state.label}</label>
@@ -94,8 +88,19 @@ class CardList extends React.Component {
             <IconButton  type="submit" >
               {(this.state.isBusy) ? <CircularProgress style={{width: '25px', height: '25px'}}/> : <SearchIcon />}
             </IconButton>
+            {(this.state.searchCardButton) && (
+              <div className={s.searchToggle}>
+                <Button className={s.button} type="submit" variant="contained" color="primary" onClick={this.handleSubmitForm} >Добавить карточку</Button>
+                <FormLabel>
+                  URL картинки:
+                  <Input type="text" onChange={this.handleImg} />
+                </FormLabel>
+              </div>
+              )
+            }
           </div>
         </Paper>
+        
         
         <form className={s.form} onSubmit={this.handleSubmitForm}>
           <FormLabel>
@@ -121,6 +126,7 @@ class CardList extends React.Component {
             )
           }
         </div>
+
       </div>
       
     )
