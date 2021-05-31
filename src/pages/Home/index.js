@@ -2,11 +2,13 @@ import React from 'react';
 import HeaderBlock from '../../components/HeaderBlock';
 import FooterBlock from '../../components/FooterBlock';
 import CardList from '../../components/CardList';
+import Test from '../../components/Test/index';
 import FirebaseContext from '../../context/firebaseContext';
-
+import { Button } from '@material-ui/core';
 class HomePage extends React.Component {
     state = {
-        wordArr: []
+        wordArr: [],
+        cardTest: true
       }
 
       urlRequest = `/cards/${this.props.user.uid}`;
@@ -36,6 +38,15 @@ class HomePage extends React.Component {
 
         setCards(this.urlRequest, [item, ...wordArr]);
       }
+
+      cardButton = () => {
+        this.setState({ cardTest: true })
+      }
+
+      
+      TestButton = () => {
+        this.setState({ cardTest: false })
+      }
     
       render() {
         const { wordArr } = this.state;
@@ -43,8 +54,12 @@ class HomePage extends React.Component {
         return (
           <>
             <HeaderBlock /> 
-            <CardList onDeletedItem={this.handleIsDelitedItem} onAddedItem={this.handleIsAddedItem} item={wordArr} />
-            <FooterBlock text="© abros.nahat" />
+            <div style={{ textAlign: 'center', background: 'rgba(10,143,196,0.9)' }}>
+              <Button variant="contained" size="large" color="primary" onClick={this.cardButton} >Карточки</Button>
+              <Button variant="contained" size="large" color="primary" onClick={this.TestButton} >Тест</Button>
+            </div>
+            {(this.state.cardTest) ? <CardList onDeletedItem={this.handleIsDelitedItem} onAddedItem={this.handleIsAddedItem} item={wordArr} /> : <Test items={wordArr} />}
+            <FooterBlock text="© 2021 abros.nahat" />
           </>
         );
       }

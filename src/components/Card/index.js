@@ -2,6 +2,7 @@ import React from 'react';
 import cl from 'classnames';
 import s from './Card.module.scss';
 import { CheckSquareOutlined, DeleteOutlined } from '@ant-design/icons';
+import defaultPhoto from './img/default.png';
 
 class Card extends React.Component {
   state = {
@@ -42,11 +43,11 @@ class Card extends React.Component {
         <div className={ cl(s.card, { [s.done]: done, [s.isRemembered]: isRemembered }) } onClick={this.handleCardClick}>
           <div className={s.cardInner}>
             <div className={s.cardFront}>
-              <img className={s.cardImg} src={img} alt="" />
+              {(img !== '') ? <img className={s.cardImg} src={img} alt="" /> : <img className={s.cardImg} src={defaultPhoto} alt="" /> }
               { eng }
             </div>
             <div className={s.cardBack}>
-              <img className={s.cardImg} src={img} alt="" />
+            {(img !== '') ? <img className={s.cardImg} src={img} alt="" /> : <img className={s.cardImg} src={defaultPhoto} alt="" /> }
               { rus }
             </div>
           </div> 
