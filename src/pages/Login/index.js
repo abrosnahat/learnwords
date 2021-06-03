@@ -46,6 +46,7 @@ class LoginPage extends React.Component {
   render() {
 
     return (
+			<div className={s.main}>
 				<Paper elevation={3} className={s.container}>
 					<div>
 						<Avatar className={s.avatar}>
@@ -110,6 +111,7 @@ class LoginPage extends React.Component {
 						</form>
 					</div>
 				</Paper>
+			</div>	
     );
   }
 }

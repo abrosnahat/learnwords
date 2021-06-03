@@ -9,16 +9,18 @@ class Test extends React.Component {
 
         const answerList = items.map(item => item.rus );
 
-        let questions = items.reduce((acc, item) => {
+        const questions = items.reduce((acc, item) => {
 
             const randomAnswer = Math.ceil(Math.random() * 4) - 1;
+            let answers = [];
 
-            let answers = [
-                answerList[Math.ceil(Math.random() * items.length) - 1],
-                answerList[Math.ceil(Math.random() * items.length) - 1],
-                answerList[Math.ceil(Math.random() * items.length) - 1],
-                answerList[Math.ceil(Math.random() * items.length) - 1]
-            ];
+            while (answers.length < 4) {
+                const randomWord = answerList[Math.ceil(Math.random() * items.length) - 1];
+                
+                if (!answers.includes(randomWord) && randomWord !== item.rus) {
+                    answers.push(randomWord);
+                }
+            }
 
             answers[randomAnswer] = item.rus;
 
@@ -31,7 +33,6 @@ class Test extends React.Component {
             }]
         }, [])
 
-  
         const quiz = {
             "appLocale": {
                 "landingHeaderText": "",
@@ -49,10 +50,9 @@ class Test extends React.Component {
         }
 
         return (
-        <div className = { TestStyles.container } >
-            <Quiz quiz = {quiz} shuffle={true} />
-        </div>
-
+            <div className = { TestStyles.container } >
+                <Quiz quiz = {quiz} shuffle={true} />
+            </div>
         )
     }
 }
